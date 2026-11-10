@@ -1,0 +1,33 @@
+PART B: PREDICT THE OUTPUT
+
+1.
+Output: 3
+Reason: d2 = d refers to the same dictionary. So adding "c" through d2 also changes d.
+
+2.
+Output: {'x': [1, 2]}
+Reason: copy() makes a shallow copy. The inner list is still shared.
+
+3.
+Output: {'b': 1, 'c': 2}
+Reason: The condition removes the item whose value is 0.
+
+4.
+Output: 1 5 {'a': 1, 'b': 5}
+Reason: setdefault gives the old value for "a" and adds "b" with value 5.
+
+5.
+Output: {1: 'c'} 1
+Reason: 1, 1.0 and True are equal dictionary keys, so only one key remains.
+
+6.
+Output: RuntimeError: dictionary changed size during iteration
+Reason: A dictionary should not be changed by deleting keys while directly looping over it.
+
+7.
+Output: None ('b', 2)
+Reason: pop("z", None) returns None because "z" is not present. popitem() removes the last item.
+
+8.
+Output: {1: 'b'}
+Reason: Both values are 1. The second item replaces the first one in the new dictionary.

@@ -1,0 +1,33 @@
+PART C: SHORT REASONING QUESTIONS
+
+1. Why does d2 = d not create a copy? Difference between copy() and deepcopy().
+Answer:
+d2 = d does not make a new dictionary. Both variables point to the same dictionary. So changes made using one variable are also seen through the other. d.copy() makes a shallow copy, where the outer dictionary is copied but nested objects are shared. copy.deepcopy() also copies the nested objects. For a nested student database, deepcopy is useful when a fully separate copy is needed.
+
+2. Why must dictionary keys be hashable? Which values can be keys?
+Answer:
+Dictionary keys must be hashable so Python can find them using their hash value. [1, 2] cannot be a key because a list is mutable. (1, 2) can be a key because a tuple of integers is hashable. {1, 2} cannot be a key because a set is unhashable. "12" can be a key because strings are hashable.
+
+3. When would you use d[key], d.get(key) and d.get(key, default)?
+Answer:
+d[key] is used when the key is present. If it is missing, Python gives KeyError. d.get(key) is used when the key may be missing and None is okay. d.get(key, default) gives a default value if the key is missing. In the word counter, frequency.get(word, 0) is useful because a new word starts with count zero.
+
+4. Difference between update() and assigning d[key] = value in a loop.
+Answer:
+d[key] = value adds or changes one item at a time. update() can add or change many key-value pairs together. update() is cleaner when we already have another dictionary or a group of values to add.
+
+5. Why is creating a new dictionary with a comprehension safer than modifying salaries in place?
+Answer:
+A new dictionary keeps the original salaries unchanged. This helps us compare old and new values and avoids changing data that may be used somewhere else. In-place changes are useful when we really want to update the original dictionary and do not need to keep the old values.
+
+6. Why does deleting keys while looping over a dictionary fail? Give two safe ways.
+Answer:
+Deleting a key changes the size of the dictionary while Python is iterating over it, so it can raise RuntimeError. One safe way is to loop over list(d.keys()) and delete from the original dictionary. Another way is to create a new dictionary using a comprehension.
+
+7. How was book-to-members data inverted, and why use a list?
+Answer:
+We loop through each book and its issued_to list. Then we store each book ID under the member ID using setdefault(). A list is used because one member can have more than one book.
+
+8. What is the time complexity of dictionary lookup? Compare it with searching a list.
+Answer:
+Dictionary lookup takes O(1) time on average. Searching an unsorted list takes O(n) time because items may need to be checked one by one. In the phone directory, a number-to-name dictionary makes reverse lookup faster than checking every contact.
